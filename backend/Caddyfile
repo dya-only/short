@@ -1,0 +1,4 @@
+short.dya.codes {
+    reverse_proxy app:8080
+    tls entrydia7691@gmail.com
+}
