@@ -2,12 +2,12 @@ package main
 
 import (
 	"encoding/json"
-	"gorm.io/driver/sqlite"
-	"gorm.io/gorm"
 	"log"
 	"math/rand"
 	"net/http"
-	"strings"
+
+	"gorm.io/driver/sqlite"
+	"gorm.io/gorm"
 )
 
 type Short struct {
@@ -41,11 +41,12 @@ func main() {
 
 	db.AutoMigrate(&Short{})
 
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+	http.HandleFunc("/api", func(w http.ResponseWriter, r *http.Request) {
 
-		// Redirect Short Url
+		// Return Short Url
 		if r.Method == http.MethodGet {
-			key := strings.TrimPrefix(r.URL.Path, "/")
+			// key := strings.TrimPrefix(r.URL.Path, "/api")
+			key := r.URL.Query().Get("key")
 
 			var short Short
 			db.First(&short, "key = ?", key)

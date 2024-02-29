@@ -4,24 +4,42 @@ import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 
 let url: string = ''
 
-const submit = (e: Event) => {
+const submit = async (e: Event) => {
   e.preventDefault()
 
-  console.log('submit', url)
+  const res = await fetch(`/api`, {
+    method: 'POST',
+    body: JSON.stringify({ url })
+  })
+  const data = await res.json()
+
+  console.log(data.key)
 }
 </script>
 
 <main>
-  <div class="title">Short</div>
 
-  <form on:submit={submit} class="container">
-    <input bind:value={url} placeholder="Type your URL" type="text">
-    <button on:click={submit}><Fa icon={faMagnifyingGlass} /></button>
-  </form>
+
+  <div class="container">
+    <div class="title">Short</div>
+
+    <form on:submit={submit} class="form">
+      <input bind:value={url} placeholder="Type your URL" type="text">
+      <button on:click={submit}><Fa icon={faMagnifyingGlass} /></button>
+    </form>
+  </div>
 </main>
 
 <style>
   main {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .container {
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -39,7 +57,7 @@ const submit = (e: Event) => {
     margin-top: -48px;
   }
 
-  .container {
+  .form {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -50,7 +68,7 @@ const submit = (e: Event) => {
     box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
   }
 
-  .container > input {
+  .form > input {
     outline: none;
     border: none;
     font-size: 18px;
@@ -59,7 +77,7 @@ const submit = (e: Event) => {
     margin-left: 10px;
   }
 
-  .container > button {
+  .form > button {
     position: relative;
     outline: none;
     border: none;
