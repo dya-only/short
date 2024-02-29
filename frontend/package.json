@@ -21,6 +21,11 @@
   "dependencies": {
     "@fortawesome/free-brands-svg-icons": "^6.5.1",
     "@fortawesome/free-solid-svg-icons": "^6.5.1",
-    "svelte-fa": "^4.0.2"
+    "@sveltech/routify": "^1.9.10",
+    "@sveltejs/kit": "^2.5.2",
+    "stores": "link:/stores",
+    "svelte-copy": "^1.4.1",
+    "svelte-fa": "^4.0.2",
+    "svelte-routing": "^2.12.0"
   }
 }

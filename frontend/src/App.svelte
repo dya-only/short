@@ -1,5 +1,10 @@
 <script lang="ts">
-  import Short from './lib/Short.svelte'
+import { Router, Route } from 'svelte-routing'
+import Short from './pages/Short.svelte'
+import Redirect from './lib/Redirect.svelte'
 </script>
 
-<Short />
+<Router>
+  <Route path="/" component={Short} />
+  <Route path="/:key" component={Redirect} />
+</Router>
