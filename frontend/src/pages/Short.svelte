@@ -20,12 +20,12 @@ const submit = async (e: Event) => {
     return
   }
 
-  const res = await fetch(`/api`, {
+  const res = await fetch(`https://shortsv.dya.codes/api`, {
     method: 'POST',
     body: JSON.stringify({ url })
   })
   const data = await res.json()
-  copyText(`http://localhost:5173/${data.key}`)
+  copyText(`https://short.dya.codes/${data.key}`)
 
   msg = '클립보드에 복사했어요!'
   success = true
